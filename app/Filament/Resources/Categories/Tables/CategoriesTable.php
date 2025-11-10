@@ -19,6 +19,10 @@ class CategoriesTable
                     ->label('Kategori Adı')
                     ->searchable()
                     ->sortable()
+                    ->wrap()
+                    ->size('lg')
+                    ->weight('medium')
+                    ->grow()
                     ->getStateUsing(fn ($record) => $record->getTranslation('name', 'tr') ?? $record->getTranslation('name', 'en') ?? '-'),
                 
                 TextColumn::make('slug')
@@ -27,11 +31,14 @@ class CategoriesTable
                     ->sortable()
                     ->badge()
                     ->color('info')
+                    ->grow()
                     ->getStateUsing(fn ($record) => $record->getTranslation('slug', 'tr') ?? $record->getTranslation('slug', 'en') ?? '-'),
                 
                 TextColumn::make('description')
                     ->label('Açıklama')
-                    ->limit(50)
+                    ->limit(100)
+                    ->wrap()
+                    ->grow()
                     ->toggleable()
                     ->getStateUsing(fn ($record) => $record->getTranslation('description', 'tr') ?? $record->getTranslation('description', 'en') ?? '-'),
                 

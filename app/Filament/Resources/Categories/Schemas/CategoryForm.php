@@ -18,18 +18,22 @@ class CategoryForm
                         TextInput::make('name')
                             ->label('Kategori Adı')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->columnSpanFull(),
                         
                         TextInput::make('slug')
                             ->label('URL Slug')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->columnSpanFull(),
                         
                         TextInput::make('description')
                             ->label('Açıklama')
-                            ->maxLength(500),
+                            ->maxLength(500)
+                            ->columnSpanFull(),
                     ])
-                    ->columns(3),
+                    ->columns(1)
+                    ->columnSpanFull(),
             ]);
     }
 }
