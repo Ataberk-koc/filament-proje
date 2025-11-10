@@ -12,10 +12,4 @@ class category extends Model
     protected $fillable = ['name', 'slug', 'description'];
     
     public $translatable = ['name', 'slug', 'description'];
-    
-    protected $casts = [
-        'name' => 'array',
-        'slug' => 'array',
-        'description' => 'array',
-    ];
 }

@@ -27,9 +27,6 @@ class Slider extends Model
     public array $translatable = ['title', 'description', 'button_text'];
 
     protected $casts = [
-        'title' => 'array',
-        'description' => 'array',
-        'button_text' => 'array',
         'is_active' => 'boolean',
         'show_navigation' => 'boolean',
         'show_pagination' => 'boolean',

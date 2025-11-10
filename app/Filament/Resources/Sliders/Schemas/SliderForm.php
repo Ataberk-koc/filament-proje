@@ -15,20 +15,20 @@ class SliderForm
     {
         return $schema
             ->components([
-                Section::make('Türkçe İçerik')
-                    ->description('Slider Türkçe içerik bilgileri')
+                Section::make('İçerik')
+                    ->description('Slider içerik bilgileri')
                     ->schema([
-                        TextInput::make('title.tr')
-                            ->label('Başlık (TR)')
+                        TextInput::make('title')
+                            ->label('Başlık')
                             ->required()
                             ->maxLength(255),
                         
-                        Textarea::make('description.tr')
-                            ->label('Açıklama (TR)')
+                        Textarea::make('description')
+                            ->label('Açıklama')
                             ->rows(3),
                         
-                        TextInput::make('button_text.tr')
-                            ->label('Buton Yazısı (TR)')
+                        TextInput::make('button_text')
+                            ->label('Buton Yazısı')
                             ->maxLength(100)
                             ->placeholder('Daha Fazla Bilgi'),
                     ])

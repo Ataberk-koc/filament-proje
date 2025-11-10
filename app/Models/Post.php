@@ -12,18 +12,15 @@ class Post extends Model
     protected $fillable = [
         "title",
         "slug",
+        "excerpt",
         "body",
         'status', 
         'user_id', 
         'category_id',
         'image',
     ];
-    public array $translatable = ['title', 'slug', 'body'];
-    protected $casts = [
-        'title' => 'array',
-        'slug' => 'array', 
-        'body' => 'array',
-    ];
+    
+    public array $translatable = ['title', 'slug', 'excerpt', 'body'];
 
     public function user()
     {

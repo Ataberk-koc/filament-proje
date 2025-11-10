@@ -44,15 +44,25 @@
                         </div>
                         
                         <!-- Title -->
-                        <h3 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 line-clamp-2">
                             <a href="{{ route('post.show', $post->id) }}" class="hover:text-blue-600 transition">
                                 {{ $post->getTranslation('title', app()->getLocale()) }}
                             </a>
                         </h3>
                         
-                        <!-- Excerpt -->
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            {{ Str::limit(strip_tags($post->getTranslation('body', app()->getLocale())), 120) }}
+                        <!-- Excerpt/Description -->
+                        @php
+                            // Önce excerpt varsa onu kullan, yoksa body'den al
+                            if (!empty($post->getTranslation('excerpt', app()->getLocale()))) {
+                                $description = strip_tags($post->getTranslation('excerpt', app()->getLocale()));
+                            } else {
+                                $description = strip_tags($post->getTranslation('body', app()->getLocale()));
+                            }
+                            $description = preg_replace('/\s+/', ' ', $description);
+                            $description = trim($description);
+                        @endphp
+                        <p class="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+                            {{ Str::limit($description, 150, '...') }}
                         </p>
                         
                         <!-- Author -->

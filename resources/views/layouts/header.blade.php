@@ -13,7 +13,7 @@
                 <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.home') }}</a>
                 <a href="{{ route('posts') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.posts') }}</a>
                 <a href="{{ url('/about') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.about') }}</a>
-                <a href="{{ url('/contact') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.contact') }}</a>
+                <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.contact') }}</a>
             </div>
             
             <!-- Language Switcher -->
@@ -36,7 +36,7 @@
             <a href="{{ route('home') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.home') }}</a>
             <a href="{{ route('posts') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.posts') }}</a>
             <a href="{{ url('/about') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.about') }}</a>
-            <a href="{{ url('/contact') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.contact') }}</a>
+            <a href="{{ route('contact') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.contact') }}</a>
         </div>
     </nav>
 </header>

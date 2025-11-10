@@ -12,42 +12,24 @@ class CategoryForm
     {
         return $schema
             ->components([
-                Section::make('Türkçe')
-                    ->description('Türkçe içerik bilgileri')
+                Section::make('Kategori Bilgileri')
+                    ->description('Kategori bilgileri')
                     ->schema([
-                        TextInput::make('name.tr')
-                            ->label('Kategori Adı (TR)')
+                        TextInput::make('name')
+                            ->label('Kategori Adı')
                             ->required()
                             ->maxLength(255),
                         
-                        TextInput::make('slug.tr')
-                            ->label('URL Slug (TR)')
+                        TextInput::make('slug')
+                            ->label('URL Slug')
                             ->required()
                             ->maxLength(255),
                         
-                        TextInput::make('description.tr')
-                            ->label('Açıklama (TR)')
+                        TextInput::make('description')
+                            ->label('Açıklama')
                             ->maxLength(500),
                     ])
                     ->columns(3),
-                
-                Section::make('English')
-                    ->description('English content information')
-                    ->schema([
-                        TextInput::make('name.en')
-                            ->label('Category Name (EN)')
-                            ->maxLength(255),
-                        
-                        TextInput::make('slug.en')
-                            ->label('URL Slug (EN)')
-                            ->maxLength(255),
-                        
-                        TextInput::make('description.en')
-                            ->label('Description (EN)')
-                            ->maxLength(500),
-                    ])
-                    ->columns(3)
-                    ->collapsed(),
             ]);
     }
 }

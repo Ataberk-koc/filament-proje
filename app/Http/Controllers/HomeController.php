@@ -40,4 +40,24 @@ class HomeController extends Controller
         
         return view('post', compact('post'));
     }
+    
+    public function contact()
+    {
+        return view('contact');
+    }
+    
+    public function sendContact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:5000',
+        ]);
+        
+        // TODO: E-posta gönderme işlemi burada yapılabilir
+        // Mail::to('info@example.com')->send(new ContactMail($validated));
+        
+        return redirect()->route('contact')->with('success', __('messages.contact_success'));
+    }
 }

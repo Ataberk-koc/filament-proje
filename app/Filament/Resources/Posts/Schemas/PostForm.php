@@ -17,65 +17,55 @@ class PostForm
     {
         return $schema
             ->components([
-                Section::make('Türkçe')
-                    ->description('Türkçe içerik bilgileri')
+                Section::make('İçerik Bilgileri')
+                    ->description('Post içerik bilgileri')
                     ->schema([
-                        TextInput::make('title.tr')
-                            ->label('Başlık (TR)')
+                        TextInput::make('title')
+                            ->label('Başlık')
                             ->required()
                             ->maxLength(255),
                         
-                        TextInput::make('slug.tr')
-                            ->label('URL Slug (TR)')
+                        TextInput::make('slug')
+                            ->label('URL Slug')
                             ->required()
                             ->maxLength(255),
                         
-                        Textarea::make('body.tr')
-                            ->label('İçerik (TR)')
+                        Textarea::make('excerpt')
+                            ->label('Özet')
+                            ->rows(3)
+                            ->maxLength(300)
+                            ->columnSpanFull()
+                            ->helperText('Kısa bir özet yazın (listelemelerde gösterilir)'),
+                        
+                        Textarea::make('body')
+                            ->label('İçerik')
                             ->required()
                             ->rows(10)
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
                 
-                Section::make('English')
-                    ->description('English content information')
-                    ->schema([
-                        TextInput::make('title.en')
-                            ->label('Title (EN)')
-                            ->maxLength(255),
-                        
-                        TextInput::make('slug.en')
-                            ->label('URL Slug (EN)')
-                            ->maxLength(255),
-                        
-                        Textarea::make('body.en')
-                            ->label('Content (EN)')
-                            ->rows(10)
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(2)
-                    ->collapsed(),
-                
                 Section::make('Ayarlar')
-                    ->description('Post ayarları ve ilişkiler')
+                    ->description('Post ayarları')
                     ->schema([
                         FileUpload::make('image')
                             ->label('Resim')
                             ->image()
-                            ->imageEditor()
                             ->disk('public')
                             ->directory('posts')
-                            ->visibility('public')
-                            ->maxSize(2048)
                             ->columnSpanFull(),
                         
                         Select::make('category_id')
                             ->label('Kategori')
-                            ->options(Category::all()->pluck('name', 'id')->map(function ($name, $id) {
-                                $category = Category::find($id);
-                                return $category->getTranslation('name', 'tr') ?? $category->getTranslation('name', 'en');
-                            }))
+                            ->options(function () {
+                                return Category::all()->mapWithKeys(function ($category) {
+                                    $name = $category->getTranslation('name', app()->getLocale()) 
+                                        ?? $category->getTranslation('name', 'tr') 
+                                        ?? $category->getTranslation('name', 'en')
+                                        ?? 'Kategori #' . $category->id;
+                                    return [$category->id => $name];
+                                });
+                            })
                             ->required()
                             ->searchable()
                             ->preload(),
@@ -84,16 +74,11 @@ class PostForm
                             ->label('Yazar')
                             ->options(User::all()->pluck('name', 'id'))
                             ->required()
-                            ->searchable()
-                            ->default(fn () => auth()->id())
-                            ->preload(),
+                            ->default(fn () => auth()->id()),
                         
                         Select::make('status')
                             ->label('Durum')
-                            ->options([
-                                'draft' => 'Taslak',
-                                'published' => 'Yayında',
-                            ])
+                            ->options(['draft' => 'Taslak', 'published' => 'Yayında'])
                             ->required()
                             ->default('draft'),
                     ])
@@ -101,3 +86,4 @@ class PostForm
             ]);
     }
 }
+
