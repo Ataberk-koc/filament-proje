@@ -35,6 +35,11 @@ class PostResource extends Resource
 
     protected static ?string $recordTitleAttribute = null;
     
+    public static function getTranslatableLocales(): array
+    {
+        return ['tr', 'en'];
+    }
+    
     public static function getRecordTitle($record): string
     {
         return $record->getTranslation('title', app()->getLocale()) ?? 

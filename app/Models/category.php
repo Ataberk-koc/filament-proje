@@ -11,5 +11,5 @@ class category extends Model
 
     protected $fillable = ['name', 'slug', 'description'];
     
-    public $translatable = ['name', 'slug', 'description'];
+    public array $translatable = ['name', 'slug', 'description'];
 }

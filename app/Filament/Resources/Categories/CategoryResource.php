@@ -29,6 +29,11 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getTranslatableLocales(): array
+    {
+        return ['tr', 'en'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);

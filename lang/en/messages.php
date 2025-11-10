@@ -40,4 +40,19 @@ return [
     'weekend' => 'Weekend',
     'closed' => 'Closed',
     'follow_us' => 'Follow Us',
+    
+    // Admin Panel - Table Columns
+    'category_name' => 'Category Name',
+    'slug' => 'Slug',
+    'description' => 'Description',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'image' => 'Image',
+    'title' => 'Title',
+    'category' => 'Category',
+    'category_id' => 'Category ID',
+    'author' => 'Author',
+    'status' => 'Status',
+    'published' => 'Published',
+    'draft' => 'Draft',
 ];

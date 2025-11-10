@@ -17,43 +17,65 @@ class PostsTable
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Resim')
+                    ->label(__('messages.image'))
                     ->circular()
                     ->defaultImageUrl(url('/images/placeholder.png'))
                     ->toggleable(),
                 
                 TextColumn::make('title')
-                    ->label('Başlık')
+                    ->label(__('messages.title'))
                     ->searchable()
                     ->sortable()
-                    ->getStateUsing(fn ($record) => $record->getTranslation('title', 'tr') ?? $record->getTranslation('title', 'en') ?? '-'),
+                    ->getStateUsing(function ($record) {
+                        $locale = app()->getLocale();
+                        $title = $record->getTranslation('title', $locale, false);
+                        if (!$title) {
+                            $title = $record->getTranslation('title', 'tr', false) ?: $record->getTranslation('title', 'en', false) ?: '-';
+                        }
+                        return $title;
+                    }),
                 
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label(__('messages.slug'))
                     ->searchable()
                     ->sortable()
                     ->badge()
                     ->color('info')
-                    ->getStateUsing(fn ($record) => $record->getTranslation('slug', 'tr') ?? $record->getTranslation('slug', 'en') ?? '-'),
+                    ->getStateUsing(function ($record) {
+                        $locale = app()->getLocale();
+                        $slug = $record->getTranslation('slug', $locale, false);
+                        if (!$slug) {
+                            $slug = $record->getTranslation('slug', 'tr', false) ?: $record->getTranslation('slug', 'en', false) ?: '-';
+                        }
+                        return $slug;
+                    }),
                 
                 TextColumn::make('category.name')
-                    ->label('Kategori')
+                    ->label(__('messages.category'))
                     ->sortable()
                     ->searchable()
-                    ->getStateUsing(fn ($record) => $record->category ? ($record->category->getTranslation('name', 'tr') ?? $record->category->getTranslation('name', 'en')) : '-'),
+                    ->getStateUsing(function ($record) {
+                        if (!$record->category) return '-';
+                        $locale = app()->getLocale();
+                        $name = $record->category->getTranslation('name', $locale, false);
+                        if (!$name) {
+                            $name = $record->category->getTranslation('name', 'tr', false) ?: $record->category->getTranslation('name', 'en', false) ?: '-';
+                        }
+                        return $name;
+                    }),
                 
                 TextColumn::make('category_id')
-                    ->label('Kategori ID')
+                    ->label(__('messages.category_id'))
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 
                 TextColumn::make('user.name')
-                    ->label('Yazar')
+                    ->label(__('messages.author'))
                     ->sortable()
                     ->searchable(),
                 
                 TextColumn::make('status')
-                    ->label('Durum')
+                    ->label(__('messages.status'))
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'published' => 'success',
@@ -61,19 +83,19 @@ class PostsTable
                         default => 'gray',
                     })
                     ->formatStateUsing(fn (string $state): string => match ($state) {
-                        'published' => 'Yayında',
-                        'draft' => 'Taslak',
+                        'published' => __('messages.published'),
+                        'draft' => __('messages.draft'),
                         default => $state,
                     }),
                 
                 TextColumn::make('created_at')
-                    ->label('Oluşturma Tarihi')
+                    ->label(__('messages.created_at'))
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 
                 TextColumn::make('updated_at')
-                    ->label('Güncelleme Tarihi')
+                    ->label(__('messages.updated_at'))
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

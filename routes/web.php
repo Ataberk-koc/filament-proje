@@ -17,3 +17,13 @@ Route::get('locale/{locale}', function ($locale) {
     }
     return redirect()->back();
 })->name('locale.switch');
+
+// Admin Language Switcher
+Route::post('admin/locale/switch', function () {
+    $locale = request('locale');
+    if (in_array($locale, ['en', 'tr'])) {
+        session(['locale' => $locale]);
+        app()->setLocale($locale);
+    }
+    return response()->json(['success' => true, 'locale' => $locale]);
+})->middleware('web')->name('admin.locale.switch');

@@ -6,7 +6,7 @@ use App\Filament\Resources\Posts\PostResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
-use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+use Filament\Actions\Action;
 
 class EditPost extends EditRecord
 {
@@ -17,7 +17,9 @@ class EditPost extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            LocaleSwitcher::make(),
+            Action::make('locale_switcher')
+                ->label('')
+                ->view('filament.components.locale-switcher'),
             DeleteAction::make(),
         ];
     }

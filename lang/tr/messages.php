@@ -40,4 +40,19 @@ return [
     'weekend' => 'Hafta Sonu',
     'closed' => 'Kapalı',
     'follow_us' => 'Bizi Takip Edin',
+    
+    // Admin Panel - Table Columns
+    'category_name' => 'Kategori Adı',
+    'slug' => 'Slug',
+    'description' => 'Açıklama',
+    'created_at' => 'Oluşturma Tarihi',
+    'updated_at' => 'Güncelleme Tarihi',
+    'image' => 'Resim',
+    'title' => 'Başlık',
+    'category' => 'Kategori',
+    'category_id' => 'Kategori ID',
+    'author' => 'Yazar',
+    'status' => 'Durum',
+    'published' => 'Yayında',
+    'draft' => 'Taslak',
 ];
