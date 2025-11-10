@@ -15,30 +15,30 @@ class SliderForm
     {
         return $schema
             ->components([
-                Section::make('İçerik')
-                    ->description('Slider içerik bilgileri')
+                Section::make(__('messages.slider_content'))
+                    ->description(__('messages.slider_content_description'))
                     ->schema([
                         TextInput::make('title')
-                            ->label('Başlık')
+                            ->label(__('messages.slider_title'))
                             ->required()
                             ->maxLength(255),
                         
                         Textarea::make('description')
-                            ->label('Açıklama')
-                            ->rows(3),
+                            ->label(__('messages.slider_description'))
+                            ->rows(4),
                         
                         TextInput::make('button_text')
-                            ->label('Buton Yazısı')
+                            ->label(__('messages.slider_button_text'))
                             ->maxLength(100)
-                            ->placeholder('Daha Fazla Bilgi'),
+                            ->placeholder(__('messages.slider_button_text_placeholder')),
                     ])
                     ->columns(2),
                 
-                Section::make('Görsel ve Ayarlar')
-                    ->description('Slider görseli ve diğer ayarlar')
+                Section::make(__('messages.slider_settings'))
+                    ->description(__('messages.slider_settings_description'))
                     ->schema([
                         FileUpload::make('image')
-                            ->label('Görsel')
+                            ->label(__('messages.slider_image'))
                             ->image()
                             ->imageEditor()
                             ->disk('public')
@@ -49,44 +49,44 @@ class SliderForm
                             ->columnSpanFull(),
                         
                         TextInput::make('link')
-                            ->label('Bağlantı (URL)')
+                            ->label(__('messages.slider_link'))
                             ->url()
-                            ->placeholder('https://example.com'),
+                            ->placeholder(__('messages.slider_link_placeholder')),
                         
                         TextInput::make('button_link')
-                            ->label('Buton Bağlantısı (URL)')
+                            ->label(__('messages.slider_button_link'))
                             ->url()
-                            ->placeholder('https://example.com/page'),
+                            ->placeholder(__('messages.slider_button_link_placeholder')),
                         
                         TextInput::make('order')
-                            ->label('Sıralama')
+                            ->label(__('messages.slider_order'))
                             ->numeric()
                             ->default(0)
                             ->required()
-                            ->helperText('Küçük değer önce gösterilir'),
+                            ->helperText(__('messages.slider_order_helper')),
                         
                         TextInput::make('autoplay_delay')
-                            ->label('Otomatik Değişim Süresi (ms)')
+                            ->label(__('messages.slider_autoplay_delay'))
                             ->numeric()
                             ->default(5000)
                             ->required()
                             ->suffix('ms')
-                            ->helperText('1000 = 1 saniye'),
+                            ->helperText(__('messages.slider_autoplay_helper')),
                         
                         Toggle::make('show_navigation')
-                            ->label('İleri/Geri Butonları')
+                            ->label(__('messages.slider_show_navigation'))
                             ->default(true)
                             ->inline(false)
-                            ->helperText('Sağ/Sol ok butonlarını göster'),
+                            ->helperText(__('messages.slider_show_navigation_helper')),
                         
                         Toggle::make('show_pagination')
-                            ->label('Sayfa Noktaları')
+                            ->label(__('messages.slider_show_pagination'))
                             ->default(true)
                             ->inline(false)
-                            ->helperText('Alt kısımda nokta göstergelerini göster'),
+                            ->helperText(__('messages.slider_show_pagination_helper')),
                         
                         Toggle::make('is_active')
-                            ->label('Aktif')
+                            ->label(__('messages.slider_is_active'))
                             ->default(true)
                             ->inline(false)
                             ->required(),

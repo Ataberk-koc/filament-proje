@@ -35,6 +35,11 @@ class SliderResource extends Resource
                'Slider #' . $record->id;
     }
 
+    public static function getTranslatableLocales(): array
+    {
+        return ['tr', 'en'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return SliderForm::configure($schema);
