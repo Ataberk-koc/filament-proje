@@ -118,20 +118,20 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-gray-800 py-20">
+    <section class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20">
         <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-bold text-center mb-4">
-                <a href="{{ route('contact') }}" class="hover:text-blue-600 transition">
-                    {{ __('messages.contact') }}
-                </a>
-            </h1>
-            <p class="text-xl text-center text-gray-700">{{ __('messages.contact_subtitle') }}</p>
-        </div>
-    </section>
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-5xl font-bold text-gray-800 mb-4">
+                    <a href="{{ route('contact') }}" class="hover:text-blue-600 transition">
+                        {{ __('messages.contact') }}
+                    </a>
+                </h1>
+                <p class="text-xl text-gray-700">{{ __('messages.contact_subtitle') }}</p>
+            </div>
 
-    <!-- Contact Content -->
-    <section class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 container mx-auto px-4 pb-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Contact Form -->
             <div class="bg-white rounded-lg shadow-lg p-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-6">{{ __('messages.send_message') }}</h2>
@@ -319,22 +319,22 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Map -->
-        <div class="mt-12">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.9267107644303!2d28.97634771541974!3d41.01552397930024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9bd6570f4e1%3A0xe8e7c5c1b1c1b1!2sIstanbul!5e0!3m2!1sen!2str!4v1234567890123!5m2!1sen!2str" 
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        class="w-full"
-                    ></iframe>
+            <!-- Map -->
+            <div class="mt-12">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.9267107644303!2d28.97634771541974!3d41.01552397930024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9bd6570f4e1%3A0xe8e7c5c1b1c1b1!2sIstanbul!5e0!3m2!1sen!2str!4v1234567890123!5m2!1sen!2str" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="w-full"
+                        ></iframe>
+                    </div>
                 </div>
             </div>
         </div>
