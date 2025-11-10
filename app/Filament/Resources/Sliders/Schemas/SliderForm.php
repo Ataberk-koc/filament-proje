@@ -23,14 +23,15 @@ class SliderForm
                             ->required()
                             ->maxLength(255),
                         
-                        Textarea::make('description')
-                            ->label(__('messages.slider_description'))
-                            ->rows(4),
-                        
                         TextInput::make('button_text')
                             ->label(__('messages.slider_button_text'))
                             ->maxLength(100)
                             ->placeholder(__('messages.slider_button_text_placeholder')),
+                        
+                        Textarea::make('description')
+                            ->label(__('messages.slider_description'))
+                            ->rows(4)
+                            ->columnSpanFull(),
                     ])
                     ->columns(2),
                 
