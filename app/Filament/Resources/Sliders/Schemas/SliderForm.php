@@ -45,6 +45,7 @@ class SliderForm
                             ->disk('public')
                             ->directory('sliders')
                             ->visibility('public')
+                            ->imagePreviewHeight('250')
                             ->required()
                             ->maxSize(2048)
                             ->columnSpanFull(),

@@ -19,6 +19,7 @@ class SlidersTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Görsel')
+                    ->disk('public')
                     ->size(80),
                 
                 TextColumn::make('title')

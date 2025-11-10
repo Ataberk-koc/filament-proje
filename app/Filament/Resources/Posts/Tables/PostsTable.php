@@ -18,6 +18,7 @@ class PostsTable
             ->columns([
                 ImageColumn::make('image')
                     ->label(__('messages.image'))
+                    ->disk('public')
                     ->circular()
                     ->defaultImageUrl(url('/images/placeholder.png'))
                     ->toggleable(),

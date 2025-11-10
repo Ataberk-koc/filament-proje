@@ -53,6 +53,8 @@ class PostForm
                             ->image()
                             ->disk('public')
                             ->directory('posts')
+                            ->visibility('public')
+                            ->imagePreviewHeight('250')
                             ->columnSpanFull(),
                         
                         Select::make('category_id')
