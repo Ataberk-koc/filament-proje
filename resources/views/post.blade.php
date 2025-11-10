@@ -39,10 +39,13 @@
         <!-- Featured Image -->
         @if($post->image)
             @php
-                $postImagePath = str_replace('public/', '', $post->image);
+                $postImagePath = $post->image;
+                if (!str_starts_with($postImagePath, '/')) {
+                    $postImagePath = '/storage/' . str_replace('public/', '', $postImagePath);
+                }
             @endphp
             <div class="mb-8">
-                <img src="/storage/{{ $postImagePath }}" 
+                <img src="{{ $postImagePath }}" 
                      alt="{{ $post->getTranslation('title', app()->getLocale()) }}" 
                      class="w-full h-96 object-cover rounded-lg shadow-lg">
             </div>
