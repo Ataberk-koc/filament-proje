@@ -17,17 +17,12 @@
                 <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
                     @if($post->image)
                         @php
-                            $postImagePath = $post->image;
-                            if (!str_starts_with($postImagePath, '/')) {
-                                $postImagePath = '/storage/' . str_replace('public/', '', $postImagePath);
-                            }
+                            $imagePath = str_replace('public/', '', $post->image);
                         @endphp
-                        <!-- Debug: {{ $post->image }} | {{ $postImagePath }} -->
                         <a href="{{ route('post.show', $post->id) }}">
-                            <img src="{{ $postImagePath }}" 
+                            <img src="/storage/{{ $imagePath }}" 
                                  alt="{{ $post->getTranslation('title', app()->getLocale()) }}" 
-                                 class="w-full h-48 object-cover hover:opacity-90 transition"
-                                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23eee%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EResim Y%C3%BCklenemedi%3C/text%3E%3C/svg%3E';">
+                                 class="w-full h-48 object-cover hover:opacity-90 transition">
                         </a>
                     @else
                         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">

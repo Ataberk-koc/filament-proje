@@ -18,6 +18,8 @@ class HomeController extends Controller
             ->latest()
             ->take(6)
             ->get();
+
+
         
         return view('home', compact('sliders', 'posts'));
     }

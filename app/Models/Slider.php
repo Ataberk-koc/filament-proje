@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Slider extends Model
@@ -35,4 +36,15 @@ class Slider extends Model
         'order' => 'integer',
         'autoplay_delay' => 'integer',
     ];
+
+    /**
+     * Resim URL'sini döndürür
+     */
+    public function getImageUrlAttribute(): ?string
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
+        return null;
+    }
 }

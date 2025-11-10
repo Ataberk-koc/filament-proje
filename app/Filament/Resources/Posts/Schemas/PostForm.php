@@ -64,7 +64,9 @@ class PostForm
                             ->label('Resim')
                             ->image()
                             ->imageEditor()
+                            ->disk('public')
                             ->directory('posts')
+                            ->visibility('public')
                             ->maxSize(2048)
                             ->columnSpanFull(),
                         

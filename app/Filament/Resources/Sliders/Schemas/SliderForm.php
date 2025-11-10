@@ -41,7 +41,9 @@ class SliderForm
                             ->label('Görsel')
                             ->image()
                             ->imageEditor()
+                            ->disk('public')
                             ->directory('sliders')
+                            ->visibility('public')
                             ->required()
                             ->maxSize(2048)
                             ->columnSpanFull(),

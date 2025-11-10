@@ -9,12 +9,8 @@
             <div class="swiper-wrapper">
                 @foreach($sliders as $slider)
                     @php
-                        // Debug: Image path
-                        $imagePath = $slider->image;
-                        // Remove 'public/' if it exists
-                        $imagePath = str_replace('public/', '', $imagePath);
+                        $imagePath = str_replace('public/', '', $slider->image);
                     @endphp
-                    <!-- Debug: {{ $slider->image }} -> /storage/{{ $imagePath }} -->
                     <div class="swiper-slide" style="background-image: url('/storage/{{ $imagePath }}')">
                         <div class="swiper-slide-content">
                             <h1 class="slider-title">
@@ -63,11 +59,9 @@
                         @php
                             $postImagePath = str_replace('public/', '', $post->image);
                         @endphp
-                        <!-- Debug: {{ $post->image }} -> /storage/{{ $postImagePath }} -->
                         <img src="/storage/{{ $postImagePath }}" 
                              alt="{{ $post->getTranslation('title', app()->getLocale()) }}" 
-                             class="w-full h-48 object-cover"
-                             onerror="console.log('Image failed to load: /storage/{{ $postImagePath }}'); this.style.display='none';">
+                             class="w-full h-48 object-cover">
                     @else
                         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
                             <span class="text-gray-500">Resim yok</span>
