@@ -1,4 +1,4 @@
-<header class="bg-white shadow-md">
+<header class="shadow-md fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/95">
     <nav class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
             <!-- Logo -->
@@ -42,7 +42,24 @@
 </header>
 
 <script>
+    // Mobile menu toggle
     document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
         document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+    
+    // Header scroll effect (optional)
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+            header?.classList.add('shadow-lg');
+        } else {
+            header?.classList.remove('shadow-lg');
+        }
+        
+        lastScroll = currentScroll;
     });
 </script>

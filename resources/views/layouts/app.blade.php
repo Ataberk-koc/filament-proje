@@ -18,16 +18,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        /* Fixed header scroll effect */
+        header {
+            transition: all 0.3s ease;
+        }
+        
+        /* Slider section - header'ın hemen altında */
         .slider-section {
             width: 100%;
             overflow: hidden;
+            margin-top: -72px; /* Header yüksekliği kadar yukarı çek */
         }
         
         .swiper {
             width: 100%;
-            height: 70vh; /* Ekran yüksekliğinin %70'i */
-            min-height: 500px; /* Minimum yükseklik */
-            max-height: 800px; /* Maximum yükseklik */
+            height: calc(70vh + 72px); /* Header yüksekliğini ekle */
+            min-height: 572px; /* 500px + 72px */
+            max-height: 872px; /* 800px + 72px */
         }
         
         .swiper-slide {
