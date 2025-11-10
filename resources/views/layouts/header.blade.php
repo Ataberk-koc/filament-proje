@@ -3,24 +3,30 @@
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ url('/') }}" class="text-2xl font-bold text-gray-800">
+                <a href="{{ LaravelLocalization::localizeURL('/') }}" class="text-2xl font-bold text-gray-800">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
             
             <!-- Navigation Menu -->
             <div class="hidden md:flex space-x-8">
-                <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.home') }}</a>
-                <a href="{{ route('posts') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.posts') }}</a>
-                <a href="{{ url('/about') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.about') }}</a>
-                <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.contact') }}</a>
+                <a href="{{ LaravelLocalization::localizeURL('/') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.home') }}</a>
+                <a href="{{ LaravelLocalization::localizeURL('/posts') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.posts') }}</a>
+                <a href="{{ LaravelLocalization::localizeURL('/about') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.about') }}</a>
+                <a href="{{ LaravelLocalization::localizeURL('/contact') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.contact') }}</a>
             </div>
             
             <!-- Language Switcher -->
             <div class="flex items-center space-x-4">
-                <a href="{{ url('locale/tr') }}" class="text-sm {{ app()->getLocale() == 'tr' ? 'font-bold text-blue-600' : 'text-gray-600' }}">TR</a>
-                <span class="text-gray-400">|</span>
-                <a href="{{ url('locale/en') }}" class="text-sm {{ app()->getLocale() == 'en' ? 'font-bold text-blue-600' : 'text-gray-600' }}">EN</a>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" 
+                       class="text-sm {{ app()->getLocale() == $localeCode ? 'font-bold text-blue-600' : 'text-gray-600' }}">
+                        {{ strtoupper($localeCode) }}
+                    </a>
+                    @if (!$loop->last)
+                        <span class="text-gray-400">|</span>
+                    @endif
+                @endforeach
             </div>
             
             <!-- Mobile Menu Button -->
@@ -33,10 +39,10 @@
         
         <!-- Mobile Menu -->
         <div class="hidden md:hidden mt-4" id="mobile-menu">
-            <a href="{{ route('home') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.home') }}</a>
-            <a href="{{ route('posts') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.posts') }}</a>
-            <a href="{{ url('/about') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.about') }}</a>
-            <a href="{{ route('contact') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.contact') }}</a>
+            <a href="{{ LaravelLocalization::localizeURL('/') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.home') }}</a>
+            <a href="{{ LaravelLocalization::localizeURL('/posts') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.posts') }}</a>
+            <a href="{{ LaravelLocalization::localizeURL('/about') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.about') }}</a>
+            <a href="{{ LaravelLocalization::localizeURL('/contact') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.contact') }}</a>
         </div>
     </nav>
 </header>
