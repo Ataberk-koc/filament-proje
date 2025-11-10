@@ -44,7 +44,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* İçeriği sola hizala */
             width: 100%;
             height: 100%;
         }
@@ -75,12 +75,13 @@
         
         .swiper-slide-content {
             position: relative;
-            text-align: center;
+            text-align: left; /* Sola hizala */
             color: white;
             z-index: 10;
             width: 90%;
-            max-width: 1000px;
+            max-width: 1200px;
             padding: 2rem;
+            margin-left: 5%; /* Sol taraftan boşluk bırak */
         }
         
         .slider-title {
@@ -96,6 +97,7 @@
             margin-bottom: 2rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
             line-height: 1.6;
+            max-width: 700px; /* Açıklama çok uzun olmasın */
         }
         
         .slider-button {
@@ -155,6 +157,18 @@
                 height: 60vh;
                 min-height: 400px;
             }
+            
+            .swiper-slide-content {
+                margin-left: 0;
+                width: 95%;
+                padding: 1.5rem;
+                text-align: center; /* Mobilde ortala */
+            }
+            
+            .slider-description {
+                max-width: 100%;
+            }
+        }
             
             .swiper-slide-content {
                 width: 95%;

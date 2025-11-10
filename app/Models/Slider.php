@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
+use App\Services\TranslationService;
 
 class Slider extends Model
 {
@@ -33,6 +34,32 @@ class Slider extends Model
         'order' => 'integer',
         'autoplay_delay' => 'integer',
     ];
+
+    protected static function booted()
+    {
+        static::saving(function ($slider) {
+            $translationService = app(TranslationService::class);
+            
+            foreach ($slider->translatable as $field) {
+                $translations = $slider->getTranslations($field);
+                
+                // Sadece bir dilde veri varsa, otomatik çevir
+                if (count($translations) === 1) {
+                    $sourceLocale = array_key_first($translations);
+                    $sourceText = $translations[$sourceLocale];
+                    
+                    if (!empty($sourceText)) {
+                        $targetLocale = $sourceLocale === 'tr' ? 'en' : 'tr';
+                        $translated = $translationService->translate($sourceText, $sourceLocale, $targetLocale);
+                        
+                        if ($translated) {
+                            $slider->setTranslation($field, $targetLocale, $translated);
+                        }
+                    }
+                }
+            }
+        });
+    }
 
     /**
      * Resim URL'sini döndürür

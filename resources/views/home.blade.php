@@ -14,18 +14,39 @@
                     <div class="swiper-slide" style="background-image: url('/storage/{{ $imagePath }}')">
                         <div class="swiper-slide-content">
                             <h1 class="slider-title">
-                                {{ $slider->getTranslation('title', app()->getLocale()) }}
+                                @php
+                                    $locale = app()->getLocale();
+                                    $title = $slider->getTranslation('title', $locale, false);
+                                    if (!$title) {
+                                        $title = $slider->getTranslation('title', 'tr', false) ?: $slider->getTranslation('title', 'en', false) ?: '';
+                                    }
+                                @endphp
+                                {{ $title }}
                             </h1>
                             
-                            @if($slider->getTranslation('description', app()->getLocale()))
+                            @php
+                                $description = $slider->getTranslation('description', $locale, false);
+                                if (!$description) {
+                                    $description = $slider->getTranslation('description', 'tr', false) ?: $slider->getTranslation('description', 'en', false);
+                                }
+                            @endphp
+                            
+                            @if($description)
                                 <p class="slider-description">
-                                    {{ $slider->getTranslation('description', app()->getLocale()) }}
+                                    {{ $description }}
                                 </p>
                             @endif
                             
-                            @if($slider->button_link && $slider->getTranslation('button_text', app()->getLocale()))
+                            @php
+                                $buttonText = $slider->getTranslation('button_text', $locale, false);
+                                if (!$buttonText) {
+                                    $buttonText = $slider->getTranslation('button_text', 'tr', false) ?: $slider->getTranslation('button_text', 'en', false);
+                                }
+                            @endphp
+                            
+                            @if($slider->button_link && $buttonText)
                                 <a href="{{ $slider->button_link }}" class="slider-button">
-                                    {{ $slider->getTranslation('button_text', app()->getLocale()) }}
+                                    {{ $buttonText }}
                                 </a>
                             @endif
                         </div>
