@@ -25,18 +25,15 @@ class SlidersTable
                 TextColumn::make('title')
                     ->label('Başlık')
                     ->searchable()
-                    ->sortable()
-                    ->getStateUsing(fn ($record) => $record->getTranslation('title', 'tr') ?? $record->getTranslation('title', 'en') ?? '-'),
+                    ->sortable(),
                 
                 TextColumn::make('description')
                     ->label('Açıklama')
                     ->limit(50)
-                    ->getStateUsing(fn ($record) => $record->getTranslation('description', 'tr') ?? $record->getTranslation('description', 'en') ?? '-')
                     ->toggleable(),
                 
                 TextColumn::make('button_text')
                     ->label('Buton Yazısı')
-                    ->getStateUsing(fn ($record) => $record->getTranslation('button_text', 'tr') ?? $record->getTranslation('button_text', 'en') ?? '-')
                     ->badge()
                     ->color('success')
                     ->toggleable(),
