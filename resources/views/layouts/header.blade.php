@@ -11,9 +11,9 @@
             <!-- Navigation Menu -->
             <div class="hidden md:flex space-x-8">
                 <a href="{{ LaravelLocalization::localizeURL('/') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.home') }}</a>
-                <a href="{{ LaravelLocalization::localizeURL('/posts') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.posts') }}</a>
+                <a href="{{ LaravelLocalization::localizeURL(app()->getLocale() == 'tr' ? '/yazilar' : '/posts') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.posts') }}</a>
                 <a href="{{ LaravelLocalization::localizeURL('/about') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.about') }}</a>
-                <a href="{{ LaravelLocalization::localizeURL('/contact') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.contact') }}</a>
+                <a href="{{ LaravelLocalization::localizeURL(app()->getLocale() == 'tr' ? '/iletisim' : '/contact') }}" class="text-gray-700 hover:text-blue-600 transition">{{ __('messages.contact') }}</a>
             </div>
             
             <!-- Language Switcher -->
@@ -40,9 +40,9 @@
         <!-- Mobile Menu -->
         <div class="hidden md:hidden mt-4" id="mobile-menu">
             <a href="{{ LaravelLocalization::localizeURL('/') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.home') }}</a>
-            <a href="{{ LaravelLocalization::localizeURL('/posts') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.posts') }}</a>
+            <a href="{{ LaravelLocalization::localizeURL(app()->getLocale() == 'tr' ? '/yazilar' : '/posts') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.posts') }}</a>
             <a href="{{ LaravelLocalization::localizeURL('/about') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.about') }}</a>
-            <a href="{{ LaravelLocalization::localizeURL('/contact') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.contact') }}</a>
+            <a href="{{ LaravelLocalization::localizeURL(app()->getLocale() == 'tr' ? '/iletisim' : '/contact') }}" class="block py-2 text-gray-700 hover:text-blue-600">{{ __('messages.contact') }}</a>
         </div>
     </nav>
 </header>

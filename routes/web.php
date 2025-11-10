@@ -10,12 +10,21 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function() {
     
-    // Ana sayfa route'ları
+    // Ana sayfa - Her dilde aynı (/)
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/posts', [HomeController::class, 'posts'])->name('posts');
-    Route::get('/post/{id}', [HomeController::class, 'show'])->name('post.show');
-    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');    
-    Route::post('/contact', [HomeController::class, 'sendContact'])->name('contact.send');
+    
+    // Her iki dil için de route'ları tanımla (LaravelLocalization otomatik olarak doğru olanı kullanacak)
+    Route::get('posts', [HomeController::class, 'posts'])->name('posts');
+    Route::get('yazilar', [HomeController::class, 'posts'])->name('posts.tr');
+    
+    Route::get('post/{id}', [HomeController::class, 'show'])->name('post.show');
+    Route::get('yazi/{id}', [HomeController::class, 'show'])->name('post.show.tr');
+    
+    Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('iletisim', [HomeController::class, 'contact'])->name('contact.tr');
+    
+    Route::post('contact', [HomeController::class, 'sendContact'])->name('contact.send');
+    Route::post('iletisim', [HomeController::class, 'sendContact'])->name('contact.send.tr');
     
 });
 
