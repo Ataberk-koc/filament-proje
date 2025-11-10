@@ -3,7 +3,7 @@
 @section('title', __('messages.home'))
 
 @section('content')
-    <!-- Slider Section -->
+    <!-- Slider Section - Tam Ekran -->
     <section class="slider-section">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">

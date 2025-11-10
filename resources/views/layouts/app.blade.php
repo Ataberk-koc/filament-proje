@@ -23,18 +23,18 @@
             transition: all 0.3s ease;
         }
         
-        /* Slider section - header'ın hemen altında */
+        /* Slider section - tam ekran, header'ın arkasında başlar */
         .slider-section {
             width: 100%;
             overflow: hidden;
             margin-top: -72px; /* Header yüksekliği kadar yukarı çek */
+            padding-top: 72px; /* Header için boşluk bırak */
         }
         
         .swiper {
             width: 100%;
-            height: calc(70vh + 72px); /* Header yüksekliğini ekle */
-            min-height: 572px; /* 500px + 72px */
-            max-height: 872px; /* 800px + 72px */
+            height: 100vh; /* Tam ekran yüksekliği */
+            min-height: 600px; /* Minimum yükseklik */
         }
         
         .swiper-slide {
@@ -153,9 +153,14 @@
         
         /* Responsive düzenlemeler */
         @media (max-width: 768px) {
+            .slider-section {
+                margin-top: -64px; /* Mobilde header daha kısa */
+                padding-top: 64px;
+            }
+            
             .swiper {
-                height: 60vh;
-                min-height: 400px;
+                height: 100vh; /* Mobilde de tam ekran */
+                min-height: 500px;
             }
             
             .swiper-slide-content {
@@ -163,16 +168,11 @@
                 width: 95%;
                 padding: 1.5rem;
                 text-align: center; /* Mobilde ortala */
+                justify-content: center;
             }
             
             .slider-description {
                 max-width: 100%;
-            }
-        }
-            
-            .swiper-slide-content {
-                width: 95%;
-                padding: 1rem;
             }
             
             .slider-button {
