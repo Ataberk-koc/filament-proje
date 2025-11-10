@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Sliders\Pages;
 
 use App\Filament\Resources\Sliders\SliderResource;
 use Filament\Actions\DeleteAction;
-use Filament\Actions\Action;
+use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 use Filament\Resources\Pages\EditRecord;
 use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 
@@ -17,9 +17,7 @@ class EditSlider extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('locale-switcher')
-                ->view('filament.components.locale-switcher'),
-            DeleteAction::make(),
+         LocaleSwitcher::make(),
         ];
     }
 

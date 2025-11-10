@@ -5,7 +5,7 @@ namespace App\Filament\Resources\Categories\Pages;
 use App\Filament\Resources\Categories\CategoryResource;
 use Filament\Resources\Pages\CreateRecord;
 use LaraZeus\SpatieTranslatable\Resources\Pages\CreateRecord\Concerns\Translatable;
-use Filament\Actions\Action;
+use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 
 class CreateCategory extends CreateRecord
 {
@@ -26,9 +26,7 @@ class CreateCategory extends CreateRecord
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('locale_switcher')
-                ->label('')
-                ->view('filament.components.locale-switcher'),
+            LocaleSwitcher::make(),
         ];
     }
 }

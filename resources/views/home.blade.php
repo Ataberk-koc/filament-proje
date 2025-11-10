@@ -92,16 +92,7 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-3">
                             {{ $post->getTranslation('title', app()->getLocale()) }}
                         </h3>
-                        @php
-                            // Önce excerpt varsa onu kullan, yoksa body'den al
-                            if (!empty($post->getTranslation('excerpt', app()->getLocale()))) {
-                                $description = strip_tags($post->getTranslation('excerpt', app()->getLocale()));
-                            } else {
-                                $description = strip_tags($post->getTranslation('body', app()->getLocale()));
-                            }
-                            $description = preg_replace('/\s+/', ' ', $description);
-                            $description = trim($description);
-                        @endphp
+                        {{  $post->description }}
                         <p class="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
                             {{ Str::limit($description, 120, '...') }}
                         </p>

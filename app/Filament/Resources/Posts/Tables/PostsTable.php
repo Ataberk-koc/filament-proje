@@ -26,44 +26,21 @@ class PostsTable
                 TextColumn::make('title')
                     ->label(__('messages.title'))
                     ->searchable()
-                    ->sortable()
-                    ->getStateUsing(function ($record) {
-                        $locale = app()->getLocale();
-                        $title = $record->getTranslation('title', $locale, false);
-                        if (!$title) {
-                            $title = $record->getTranslation('title', 'tr', false) ?: $record->getTranslation('title', 'en', false) ?: '-';
-                        }
-                        return $title;
-                    }),
+                    ->sortable(),
                 
                 TextColumn::make('slug')
                     ->label(__('messages.slug'))
                     ->searchable()
-                    ->sortable()
+                     ->sortable()
                     ->badge()
-                    ->color('info')
-                    ->getStateUsing(function ($record) {
-                        $locale = app()->getLocale();
-                        $slug = $record->getTranslation('slug', $locale, false);
-                        if (!$slug) {
-                            $slug = $record->getTranslation('slug', 'tr', false) ?: $record->getTranslation('slug', 'en', false) ?: '-';
-                        }
-                        return $slug;
-                    }),
+                    ->color('info'),
+                    
                 
                 TextColumn::make('category.name')
                     ->label(__('messages.category'))
                     ->sortable()
-                    ->searchable()
-                    ->getStateUsing(function ($record) {
-                        if (!$record->category) return '-';
-                        $locale = app()->getLocale();
-                        $name = $record->category->getTranslation('name', $locale, false);
-                        if (!$name) {
-                            $name = $record->category->getTranslation('name', 'tr', false) ?: $record->category->getTranslation('name', 'en', false) ?: '-';
-                        }
-                        return $name;
-                    }),
+                    ->searchable(),
+                   
                 
                 TextColumn::make('category_id')
                     ->label(__('messages.category_id'))

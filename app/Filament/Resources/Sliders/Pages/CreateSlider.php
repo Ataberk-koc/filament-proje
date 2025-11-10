@@ -5,7 +5,7 @@ namespace App\Filament\Resources\Sliders\Pages;
 use App\Filament\Resources\Sliders\SliderResource;
 use Filament\Resources\Pages\CreateRecord;
 use LaraZeus\SpatieTranslatable\Resources\Pages\CreateRecord\Concerns\Translatable;
-use Filament\Actions\Action;
+use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 
 class CreateSlider extends CreateRecord
 {
@@ -16,8 +16,8 @@ class CreateSlider extends CreateRecord
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('locale-switcher')
-                ->view('filament.components.locale-switcher'),
+                        LocaleSwitcher::make(),
+
         ];
     }
 

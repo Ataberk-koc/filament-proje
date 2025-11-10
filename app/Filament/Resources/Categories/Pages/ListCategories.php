@@ -5,8 +5,9 @@ namespace App\Filament\Resources\Categories\Pages;
 use App\Filament\Resources\Categories\CategoryResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
 use Filament\Actions\Action;
+use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
+use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 
 
 class ListCategories extends ListRecords
@@ -18,9 +19,8 @@ class ListCategories extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('locale_switcher')
-                ->label('')
-                ->view('filament.components.locale-switcher'),
+                      LocaleSwitcher::make(),
+
             CreateAction::make(),
         ];
     }

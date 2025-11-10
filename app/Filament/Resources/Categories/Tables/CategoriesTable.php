@@ -19,19 +19,9 @@ class CategoriesTable
                     ->label(__('messages.category_name'))
                     ->searchable()
                     ->sortable()
-                    ->wrap()
                     ->size('lg')
                     ->weight('medium')
-                    ->grow()
-                    ->getStateUsing(function ($record) {
-                        $locale = app()->getLocale();
-                        $name = $record->getTranslation('name', $locale, false);
-                        if (!$name) {
-                            $name = $record->getTranslation('name', 'tr', false) ?: $record->getTranslation('name', 'en', false) ?: '-';
-                        }
-                        return $name;
-                    }),
-                
+                    ->grow(),
                 
                 TextColumn::make('slug')
                     ->label(__('messages.slug'))
